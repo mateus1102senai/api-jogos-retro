@@ -1,12 +1,12 @@
-
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-    console.log("Iniciando o seed...");
-    // Codigo opcional para linpar o banco de dados antes de inserir novos dados
-    await prisma.card.deleteMany({});
-    await prisma.collection.deleteMany({});
+  console.log("Iniciando o seed...");
+
+  // Código opcional para limpar o banco de dados antes de inserir novos dados
+  await prisma.card.deleteMany({});
+  await prisma.collection.deleteMany({});
 
   // Criar coleções de diferentes temáticas
   const nbaLegends = await prisma.collection.create({
@@ -476,11 +476,11 @@ async function main() {
   );
 }
 
-// main()
-//   .catch((e) => {
-//     console.error(e);
-//     process.exit(1);
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect();
-//   });
+/* main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  }); */

@@ -1,7 +1,7 @@
 import prisma from "../../prisma/prisma.js";
 
 class UserModel {
-    // Obter todos os usuários
+  // Obter todos os usuários
   async findAll() {
     const users = await prisma.user.findMany();
 
@@ -12,19 +12,19 @@ class UserModel {
   async findById(id) {
     const user = await prisma.user.findUnique({
       where: {
-        id: Number(id)
-      }
+        id: Number(id),
+      },
     });
 
     return user;
   }
 
-  //obter um usuário pelo email
+  // Obter um usuário pelo email
   async findByEmail(email) {
     const user = await prisma.user.findUnique({
       where: {
-        email
-      }
+        email,
+      },
     });
 
     return user;
@@ -43,19 +43,20 @@ class UserModel {
   async update(id, data) {
     const user = await prisma.user.update({
       where: {
-        id: Number(id)
+        id: Number(id),
       },
-      data
+      data,
     });
 
     return user;
   }
+
   // Excluir um usuário
   async delete(id) {
     await prisma.user.delete({
       where: {
-        id: Number(id)
-      }
+        id: Number(id),
+      },
     });
 
     return true;

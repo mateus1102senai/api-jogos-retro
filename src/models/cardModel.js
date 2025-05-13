@@ -12,6 +12,7 @@ class CardModel {
     }
 
     const skip = (Number(pagina) - 1) * Number(limite);
+    //                4 - 1 = 3 * 10 = 30
 
     const where = {};
 
@@ -28,7 +29,6 @@ class CardModel {
     if (name) {
       where.name = {
         contains: name,
-        //mode: "insensitive",
       };
     }
 
@@ -66,13 +66,13 @@ class CardModel {
     });
 
     const totalExibidos = cartas.length;
-    const totalCartas = await prisma.card.count({
+    const totalGeral = await prisma.card.count({
       where,
     });
 
     // console.log(cartas);
 
-    return cartas;
+    return { totalExibidos, totalGeral, cartas };
   }
 
   // Obter uma carta pelo ID
